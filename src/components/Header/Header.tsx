@@ -3,7 +3,13 @@ import { Link } from 'react-router-dom';
 
 import './Header.styles.scss';
 
-const Header = () => {
+import { auth } from '../../firebase/firebase.utils';
+
+type Props = {
+  currentUser: firebase.User | null;
+};
+
+const Header = ({ currentUser }: Props) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
@@ -16,6 +22,15 @@ const Header = () => {
         <Link className="logo-container" to="/shop">
           Contact
         </Link>
+        {currentUser ? (
+          <div className="option" onClick={() => auth.signOut()}>
+            SIGN OUT
+          </div>
+        ) : (
+          <Link className="option" to="/signin">
+            SIGN IN
+          </Link>
+        )}
       </div>
     </div>
   );
