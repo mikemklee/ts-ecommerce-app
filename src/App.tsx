@@ -8,10 +8,7 @@ import ShopPage from './pages/Shop/Shop';
 import Authenticate from './pages/Authenticate/Authenticate';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 
-type Partial<T> = {
-  [P in keyof T]?: T[P];
-};
-type User = Partial<firebase.User> & { id?: string };
+type User = firebase.firestore.DocumentData & { id?: string };
 
 type Props = {};
 
