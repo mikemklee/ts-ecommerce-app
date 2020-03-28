@@ -7,14 +7,14 @@ import { signInWithGoogle } from '../../firebase/firebase.utils';
 
 import './SignIn.styles.scss';
 
-type SignInProps = {};
-type SignInState = {
+type Props = {};
+type State = {
   email: string;
   password: string;
 };
 
-class SignIn extends React.Component<SignInProps, SignInState> {
-  constructor(props: SignInProps) {
+class SignIn extends React.Component<Props, State> {
+  constructor(props: Props) {
     super(props);
 
     this.state = {
@@ -32,7 +32,7 @@ class SignIn extends React.Component<SignInProps, SignInState> {
   handleChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const { value, name } = event.target;
 
-    this.setState({ [name]: value } as Pick<SignInState, keyof SignInState>);
+    this.setState({ [name]: value } as Pick<State, keyof State>);
   };
 
   render() {

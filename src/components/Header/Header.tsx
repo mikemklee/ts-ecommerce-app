@@ -6,7 +6,7 @@ import './Header.styles.scss';
 import { auth } from '../../firebase/firebase.utils';
 
 type Props = {
-  currentUser: firebase.User | null;
+  currentUser: unknown;
 };
 
 const Header = ({ currentUser }: Props) => {
