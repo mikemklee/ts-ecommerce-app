@@ -1,26 +1,24 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
 
 import './Header.styles.scss';
 
 import { auth } from '../../firebase/firebase.utils';
+import { RootState } from '../../redux/rootReducer';
 
-type Props = {
-  currentUser: unknown;
-};
-
-const Header = ({ currentUser }: Props) => {
+const Header = ({ currentUser }: ReturnType<typeof mapStateToProps>) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
-        Logo
+        LOGO
       </Link>
       <div className="options">
-        <Link className="logo-container" to="/shop">
-          Shop
+        <Link className="option" to="/shop">
+          SHOP
         </Link>
-        <Link className="logo-container" to="/shop">
-          Contact
+        <Link className="option" to="/shop">
+          CONTACT
         </Link>
         {currentUser ? (
           <div className="option" onClick={() => auth.signOut()}>
@@ -36,4 +34,8 @@ const Header = ({ currentUser }: Props) => {
   );
 };
 
-export default Header;
+const mapStateToProps = (state: RootState) => ({
+  currentUser: state.user.currentUser,
+});
+
+export default connect(mapStateToProps)(Header);
