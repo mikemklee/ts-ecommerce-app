@@ -6,6 +6,7 @@ import './Header.styles.scss';
 
 import { auth } from '../../firebase/firebase.utils';
 import { RootState } from '../../redux/rootReducer';
+import CartIcon from '../CartIcon/CartIcon';
 
 const Header = ({ currentUser }: ReturnType<typeof mapStateToProps>) => {
   return (
@@ -29,6 +30,7 @@ const Header = ({ currentUser }: ReturnType<typeof mapStateToProps>) => {
             SIGN IN
           </Link>
         )}
+        <CartIcon />
       </div>
     </div>
   );
