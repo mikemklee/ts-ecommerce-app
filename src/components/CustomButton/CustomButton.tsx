@@ -5,6 +5,7 @@ import './CustomButton.styles.scss';
 type Props = {
   children?: ReactChild;
   type?: 'submit';
+  inverted?: boolean;
   isGoogleSignIn?: boolean;
   onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
 };
@@ -12,11 +13,16 @@ type Props = {
 const CustomButton = ({
   children,
   type,
+  inverted = false,
   isGoogleSignIn = false,
   onClick = () => {},
 }: Props) => (
   <button
-    className={`${isGoogleSignIn ? 'google-sign-in' : ''} custom-button`}
+    className={`
+      custom-button
+      ${inverted ? 'inverted' : ''}
+      ${isGoogleSignIn ? 'google-sign-in' : ''}
+    `}
     type={type}
     onClick={onClick}
   >
