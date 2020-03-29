@@ -7,9 +7,11 @@ import Header from './components/Header/Header';
 import HomePage from './pages/Homepage/Homepage';
 import ShopPage from './pages/Shop/Shop';
 import Authenticate from './pages/Authenticate/Authenticate';
+
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
-import { setCurrentUser } from './redux/user/user.actions';
 import { RootActionTypes, RootState } from './redux/rootReducer';
+import { setCurrentUser } from './redux/user/user.actions';
+import { selectCurrentUser } from './redux/user/user.selectors';
 
 export type User = firebase.firestore.DocumentData & { id?: string };
 
@@ -66,8 +68,8 @@ class App extends React.Component<Props, State> {
   }
 }
 
-const mapStateToProps = ({ user }: RootState) => ({
-  currentUser: user.currentUser,
+const mapStateToProps = (state: RootState) => ({
+  currentUser: selectCurrentUser(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<RootActionTypes>) => ({

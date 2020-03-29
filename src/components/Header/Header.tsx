@@ -4,10 +4,13 @@ import { connect } from 'react-redux';
 
 import './Header.styles.scss';
 
-import { auth } from '../../firebase/firebase.utils';
-import { RootState } from '../../redux/rootReducer';
 import CartIcon from '../CartIcon/CartIcon';
 import CartPreview from '../CartPreview/CartPreview';
+
+import { auth } from '../../firebase/firebase.utils';
+import { RootState } from '../../redux/rootReducer';
+import { selectCartVisible } from '../../redux/cart/cart.selectors';
+import { selectCurrentUser } from '../../redux/user/user.selectors';
 
 type Props = ReturnType<typeof mapStateToProps>;
 
@@ -41,8 +44,8 @@ const Header = ({ currentUser, cartVisible }: Props) => {
 };
 
 const mapStateToProps = (state: RootState) => ({
-  currentUser: state.user.currentUser,
-  cartVisible: state.cart.visible,
+  currentUser: selectCurrentUser(state),
+  cartVisible: selectCartVisible(state),
 });
 
 export default connect(mapStateToProps)(Header);
