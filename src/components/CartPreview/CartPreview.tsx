@@ -5,7 +5,9 @@ import './CartPreview.styles.scss';
 
 import CartItem from '../CartItem/CartItem';
 import CustomButton from '../CustomButton/CustomButton';
+
 import { RootState } from '../../redux/rootReducer';
+import { selectCartItems } from '../../redux/cart/cart.selectors';
 
 type Props = ReturnType<typeof mapStateToProps>;
 
@@ -21,7 +23,7 @@ const CartPreview = ({ cartItems }: Props) => (
 );
 
 const mapStateToProps = (state: RootState) => ({
-  cartItems: state.cart.items,
+  cartItems: selectCartItems(state),
 });
 
 export default connect(mapStateToProps)(CartPreview);

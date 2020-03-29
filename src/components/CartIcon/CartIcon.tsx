@@ -6,6 +6,7 @@ import icon from '../../assets/images/shopping-cart.png';
 
 import { RootActionTypes, RootState } from '../../redux/rootReducer';
 import { toggleCartVisible } from '../../redux/cart/cart.actions';
+import { selectCartItemsCount } from '../../redux/cart/cart.selectors';
 
 type Props = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>;
@@ -18,7 +19,7 @@ const CartIcon = ({ itemCount, toggleCartVisible }: Props) => (
 );
 
 const mapStateToProps = (state: RootState) => ({
-  itemCount: state.cart.items.reduce((acc, item) => acc + item.quantity, 0),
+  itemCount: selectCartItemsCount(state),
 });
 
 const mapDispatchToProps = (dispatch: Dispatch<RootActionTypes>) => ({
