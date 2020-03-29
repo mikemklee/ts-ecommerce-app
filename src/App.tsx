@@ -1,5 +1,5 @@
 import React, { Dispatch } from 'react';
-import { Route, Switch } from 'react-router-dom';
+import { Route, Switch, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './App.css';
@@ -9,11 +9,12 @@ import ShopPage from './pages/Shop/Shop';
 import Authenticate from './pages/Authenticate/Authenticate';
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { setCurrentUser } from './redux/user/user.actions';
-import { RootActionTypes } from './redux/rootReducer';
+import { RootActionTypes, RootState } from './redux/rootReducer';
 
 export type User = firebase.firestore.DocumentData & { id?: string };
 
-type Props = ReturnType<typeof mapDispatchToProps>;
+type Props = ReturnType<typeof mapStateToProps> &
+  ReturnType<typeof mapDispatchToProps>;
 type State = {};
 
 class App extends React.Component<Props, State> {
@@ -52,15 +53,25 @@ class App extends React.Component<Props, State> {
         <Switch>
           <Route exact path="/" component={HomePage} />
           <Route path="/shop" component={ShopPage} />
-          <Route path="/signin" component={Authenticate} />
+          <Route
+            exact
+            path="/signin"
+            render={() =>
+              this.props.currentUser ? <Redirect to="/" /> : <Authenticate />
+            }
+          />
         </Switch>
       </div>
     );
   }
 }
 
+const mapStateToProps = ({ user }: RootState) => ({
+  currentUser: user.currentUser,
+});
+
 const mapDispatchToProps = (dispatch: Dispatch<RootActionTypes>) => ({
   setCurrentUser: (user: User | null) => dispatch(setCurrentUser(user)),
 });
 
-export default connect(null, mapDispatchToProps)(App);
+export default connect(mapStateToProps, mapDispatchToProps)(App);
