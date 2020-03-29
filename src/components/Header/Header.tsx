@@ -15,7 +15,7 @@ const Header = ({ currentUser, cartVisible }: Props) => {
   return (
     <div className="header">
       <Link className="logo-container" to="/">
-        LOGO
+        libre
       </Link>
       <div className="options">
         <Link className="option" to="/shop">
