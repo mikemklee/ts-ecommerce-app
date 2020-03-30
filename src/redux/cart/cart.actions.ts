@@ -21,12 +21,22 @@ export const addItem = (item: Item): AddItemAction => ({
   payload: item,
 });
 
+export const REMOVE_ITEM = 'REMOVE_ITEM';
+export type RemoveItemAction = {
+  type: typeof REMOVE_ITEM;
+  payload: Item;
+};
+export const removeItem = (item: Item): RemoveItemAction => ({
+  type: REMOVE_ITEM,
+  payload: item,
+});
+
 export const DROP_ITEM = 'DROP_ITEM';
 export type DropItemAction = {
   type: typeof DROP_ITEM;
   payload: CartItem;
 };
-export const dropItemFromCart = (item: CartItem): DropItemAction => ({
+export const dropItem = (item: CartItem): DropItemAction => ({
   type: DROP_ITEM,
   payload: item,
 });
@@ -34,4 +44,5 @@ export const dropItemFromCart = (item: CartItem): DropItemAction => ({
 export type CartActionTypes =
   | ToggleCartVisibleAction
   | AddItemAction
+  | RemoveItemAction
   | DropItemAction;

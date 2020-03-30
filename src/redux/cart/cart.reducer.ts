@@ -3,10 +3,11 @@ import {
   CartActionTypes,
   TOGGLE_CART_VISIBLE,
   ADD_ITEM,
+  REMOVE_ITEM,
   DROP_ITEM,
 } from './cart.actions';
 
-import { addItemToCart } from './cart.utils';
+import { addItemToCart, removeItemFromCart } from './cart.utils';
 
 export type CartItem = Item & { quantity: number };
 
@@ -34,6 +35,11 @@ const cartReducer = (
       return {
         ...state,
         items: addItemToCart(state.items, action.payload),
+      };
+    case REMOVE_ITEM:
+      return {
+        ...state,
+        items: removeItemFromCart(state.items, action.payload),
       };
     case DROP_ITEM:
       return {
