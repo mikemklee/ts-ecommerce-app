@@ -12,8 +12,8 @@ type Props = {
 };
 
 const FormInput = ({ handleChange, label, ...otherProps }: Props) => (
-  <div className="group">
-    <input className="form-input" onChange={handleChange} {...otherProps} />
+  <div className='group'>
+    <input className='form-input' onChange={handleChange} {...otherProps} />
     {label ? (
       <label
         className={`${

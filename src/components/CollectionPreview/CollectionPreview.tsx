@@ -12,9 +12,9 @@ type Props = {
 
 const CollectionPreview = ({ title, items }: Props) => {
   return (
-    <div className="collection-preview">
-      <h1 className="title">{title}</h1>
-      <div className="preview">
+    <div className='collection-preview'>
+      <h1 className='title'>{title}</h1>
+      <div className='preview'>
         {items.slice(0, 4).map(item => {
           return <CollectionItem key={item.id} item={item} />;
         })}

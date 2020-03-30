@@ -59,7 +59,7 @@ class Directory extends React.Component<DirectoryProps, DirectoryState> {
 
   render() {
     return (
-      <div className="directory-menu">
+      <div className='directory-menu'>
         {this.state.sections.map(({ id, title, imageUrl, linkUrl, size }) => {
           return (
             <MenuItem

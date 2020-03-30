@@ -37,29 +37,29 @@ class SignIn extends React.Component<Props, State> {
 
   render() {
     return (
-      <div className="sign-in">
+      <div className='sign-in'>
         <h2>I already have an account</h2>
         <span>Sign in with your email and password</span>
 
         <form onSubmit={this.handleSubmit}>
           <FormInput
-            name="email"
-            type="email"
+            name='email'
+            type='email'
             handleChange={this.handleChange}
             value={this.state.email}
-            label="email"
+            label='email'
             required
           />
           <FormInput
-            name="password"
-            type="password"
+            name='password'
+            type='password'
             value={this.state.password}
             handleChange={this.handleChange}
-            label="password"
+            label='password'
             required
           />
-          <div className="buttons">
-            <CustomButton type="submit"> Sign in </CustomButton>
+          <div className='buttons'>
+            <CustomButton type='submit'> Sign in </CustomButton>
             <CustomButton isGoogleSignIn onClick={signInWithGoogle}>
               Sign in with Google
             </CustomButton>

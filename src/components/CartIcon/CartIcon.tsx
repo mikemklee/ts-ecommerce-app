@@ -12,8 +12,8 @@ type Props = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>;
 
 const CartIcon = ({ itemCount, toggleCartVisible }: Props) => (
-  <div className="cart-icon" onClick={toggleCartVisible}>
-    <img src={icon} alt="cart" />
+  <div className='cart-icon' onClick={toggleCartVisible}>
+    <img src={icon} alt='cart' />
     <span>{itemCount}</span>
   </div>
 );
