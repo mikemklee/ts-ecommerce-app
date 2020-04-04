@@ -1,79 +1,33 @@
 import React from 'react';
+import { connect } from 'react-redux';
 
 import './Directory.styles.scss';
+
 import MenuItem from '../MenuItem/MenuItem';
 
-type SectionItem = {
-  title: string;
-  imageUrl: string;
-  id: number;
-  linkUrl: string;
-  size?: string;
-};
-type DirectoryProps = {};
-type DirectoryState = {
-  sections: SectionItem[];
-};
+import { RootState } from '../../redux/rootReducer';
+import { selectDirectorySections } from '../../redux/directory/directory.selectors';
 
-class Directory extends React.Component<DirectoryProps, DirectoryState> {
-  constructor(props: DirectoryProps) {
-    super(props);
+type Props = ReturnType<typeof mapStateToProps>;
 
-    this.state = {
-      sections: [
-        {
-          title: 'hats',
-          imageUrl: 'https://i.ibb.co/cvpntL1/hats.png',
-          id: 1,
-          linkUrl: 'shop/hats',
-        },
-        {
-          title: 'jackets',
-          imageUrl: 'https://i.ibb.co/px2tCc3/jackets.png',
-          id: 2,
-          linkUrl: 'shop/jackets',
-        },
-        {
-          title: 'sneakers',
-          imageUrl: 'https://i.ibb.co/0jqHpnp/sneakers.png',
-          id: 3,
-          linkUrl: 'shop/sneakers',
-        },
-        {
-          title: 'womens',
-          imageUrl: 'https://i.ibb.co/GCCdy8t/womens.png',
-          size: 'large',
-          id: 4,
-          linkUrl: 'shop/womens',
-        },
-        {
-          title: 'mens',
-          imageUrl: 'https://i.ibb.co/R70vBrQ/men.png',
-          size: 'large',
-          id: 5,
-          linkUrl: 'shop/mens',
-        },
-      ],
-    };
-  }
+const Directory = ({ sections }: Props) => (
+  <div className='directory-menu'>
+    {sections.map(({ id, title, imageUrl, linkUrl, size }) => {
+      return (
+        <MenuItem
+          key={id}
+          title={title}
+          imageUrl={imageUrl}
+          linkUrl={linkUrl}
+          size={size}
+        />
+      );
+    })}
+  </div>
+);
 
-  render() {
-    return (
-      <div className='directory-menu'>
-        {this.state.sections.map(({ id, title, imageUrl, linkUrl, size }) => {
-          return (
-            <MenuItem
-              key={id}
-              title={title}
-              imageUrl={imageUrl}
-              linkUrl={linkUrl}
-              size={size}
-            />
-          );
-        })}
-      </div>
-    );
-  }
-}
+const mapStateToProps = (state: RootState) => ({
+  sections: selectDirectorySections(state),
+});
 
-export default Directory;
+export default connect(mapStateToProps)(Directory);
