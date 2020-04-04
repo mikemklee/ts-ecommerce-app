@@ -1,4 +1,4 @@
-import { Item } from './../../pages/Shop/Shop.data';
+import { Item } from '../shop/Shop.data';
 import {
   CartActionTypes,
   TOGGLE_CART_VISIBLE,
@@ -44,7 +44,7 @@ const cartReducer = (
     case DROP_ITEM:
       return {
         ...state,
-        items: state.items.filter(item => item.id !== action.payload.id),
+        items: state.items.filter((item) => item.id !== action.payload.id),
       };
     default:
       return state;

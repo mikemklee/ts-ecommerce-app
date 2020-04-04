@@ -11,19 +11,25 @@ import directoryReducer, {
 } from './directory/directory.reducer';
 import { DirectoryActionTypes } from './directory/directory.actions';
 
+import shopReducer, { ShopState } from './shop/shop.reducer';
+import { ShopActionTypes } from './shop/shop.actions';
+
 export type RootState = {
   user: UserState;
   cart: CartState;
   directory: DirectoryState;
+  shop: ShopState;
 };
 
 export type RootActionTypes =
   | UserActionTypes
   | CartActionTypes
-  | DirectoryActionTypes;
+  | DirectoryActionTypes
+  | ShopActionTypes;
 
 export default combineReducers({
   user: userReducer,
   cart: cartReducer,
   directory: directoryReducer,
+  shop: shopReducer,
 });

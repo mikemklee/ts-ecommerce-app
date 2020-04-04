@@ -2,7 +2,7 @@ import React from 'react';
 
 import './CollectionPreview.styles.scss';
 
-import { Item } from '../../pages/Shop/Shop.data';
+import { Item } from '../../redux/shop/Shop.data';
 import CollectionItem from '../CollectionItem/CollectionItem';
 
 type Props = {
@@ -15,7 +15,7 @@ const CollectionPreview = ({ title, items }: Props) => {
     <div className='collection-preview'>
       <h1 className='title'>{title}</h1>
       <div className='preview'>
-        {items.slice(0, 4).map(item => {
+        {items.slice(0, 4).map((item) => {
           return <CollectionItem key={item.id} item={item} />;
         })}
       </div>

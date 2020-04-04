@@ -1,4 +1,4 @@
-import { Item } from './../../pages/Shop/Shop.data';
+import { Item } from '../shop/Shop.data';
 import { CartItem } from './cart.reducer';
 
 export const TOGGLE_CART_VISIBLE = 'TOGGLE_CART_VISIBLE';
