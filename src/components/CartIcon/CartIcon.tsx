@@ -1,7 +1,12 @@
 import React, { Dispatch } from 'react';
 import { connect } from 'react-redux';
 
-import './CartIcon.styles.scss';
+import {
+  CartIconContainer,
+  ShoppingIcon,
+  ItemCountContainer,
+} from './CartIcon.styles';
+
 import icon from '../../assets/images/shopping-cart.png';
 
 import { RootActionTypes, RootState } from '../../redux/rootReducer';
@@ -12,10 +17,10 @@ type Props = ReturnType<typeof mapStateToProps> &
   ReturnType<typeof mapDispatchToProps>;
 
 const CartIcon = ({ itemCount, toggleCartVisible }: Props) => (
-  <div className='cart-icon' onClick={toggleCartVisible}>
-    <img src={icon} alt='cart' />
-    <span>{itemCount}</span>
-  </div>
+  <CartIconContainer onClick={toggleCartVisible}>
+    <ShoppingIcon src={icon} alt='cart' />
+    <ItemCountContainer>{itemCount}</ItemCountContainer>
+  </CartIconContainer>
 );
 
 const mapStateToProps = (state: RootState) => ({

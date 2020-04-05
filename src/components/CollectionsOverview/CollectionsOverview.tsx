@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './CollectionsOverview.styles.scss';
+import { CollectionsOverviewContainer } from './CollectionsOverview.styles';
 
 import CollectionPreview from '../CollectionPreview/CollectionPreview';
 
@@ -11,11 +11,11 @@ import { selectCollectionsForPreview } from '../../redux/shop/shop.selectors';
 type Props = ReturnType<typeof mapStateToProps>;
 
 const CollectionsOverview = ({ collections }: Props) => (
-  <div className='collections-overview'>
+  <CollectionsOverviewContainer>
     {collections.map(({ id, ...otherProps }) => (
       <CollectionPreview key={id} {...otherProps} />
     ))}
-  </div>
+  </CollectionsOverviewContainer>
 );
 
 const mapStateToProps = (state: RootState) => ({

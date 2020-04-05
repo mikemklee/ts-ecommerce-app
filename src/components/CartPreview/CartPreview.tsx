@@ -2,10 +2,14 @@ import React, { Dispatch } from 'react';
 import { connect } from 'react-redux';
 import { withRouter, RouteComponentProps } from 'react-router-dom';
 
-import './CartPreview.styles.scss';
+import {
+  CartPreviewContainer,
+  CartPreviewButton,
+  EmptyMessageContainer,
+  CartItemsContainer,
+} from './CartPreview.styles';
 
 import CartItem from '../CartItem/CartItem';
-import CustomButton from '../CustomButton/CustomButton';
 
 import { RootState, RootActionTypes } from '../../redux/rootReducer';
 import { toggleCartVisible } from '../../redux/cart/cart.actions';
@@ -16,25 +20,25 @@ type Props = ReturnType<typeof mapStateToProps> &
   RouteComponentProps;
 
 const CartPreview = ({ cartItems, history, toggleCart }: Props) => (
-  <div className='cart-preview'>
-    <div className='cart-items'>
+  <CartPreviewContainer>
+    <CartItemsContainer>
       {cartItems.length ? (
-        cartItems.map(cartItem => (
+        cartItems.map((cartItem) => (
           <CartItem key={cartItem.id} item={cartItem} />
         ))
       ) : (
-        <span className='empty-message'>Your cart is empty</span>
+        <EmptyMessageContainer>Your cart is empty</EmptyMessageContainer>
       )}
-    </div>
-    <CustomButton
+    </CartItemsContainer>
+    <CartPreviewButton
       onClick={() => {
         history.push('/checkout');
         toggleCart();
       }}
     >
       GO TO CHECKOUT
-    </CustomButton>
-  </div>
+    </CartPreviewButton>
+  </CartPreviewContainer>
 );
 
 const mapStateToProps = (state: RootState) => ({

@@ -1,6 +1,11 @@
 import React from 'react';
 
-import './CartItem.styles.scss';
+import {
+  CartItemContainer,
+  ItemDetailsContainer,
+  CartItemImage,
+} from './CartItem.styles';
+
 import { CartItem as CartItemType } from '../../redux/cart/cart.reducer';
 
 type Props = {
@@ -8,15 +13,15 @@ type Props = {
 };
 
 const CartItem = ({ item: { imageUrl, price, name, quantity } }: Props) => (
-  <div className='cart-item'>
-    <img src={imageUrl} alt='item' />
-    <div className='item-details'>
-      <span className='name'>{name}</span>
-      <span className='price'>
+  <CartItemContainer>
+    <CartItemImage src={imageUrl} alt='item' />
+    <ItemDetailsContainer>
+      <span>{name}</span>
+      <span>
         {quantity} x ${price}
       </span>
-    </div>
-  </div>
+    </ItemDetailsContainer>
+  </CartItemContainer>
 );
 
 export default CartItem;

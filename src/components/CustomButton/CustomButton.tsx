@@ -1,6 +1,6 @@
 import React, { ReactChild } from 'react';
 
-import './CustomButton.styles.scss';
+import { CustomButtonContainer } from './CustomButton.styles';
 
 type Props = {
   children?: ReactChild;
@@ -10,24 +10,8 @@ type Props = {
   onClick?(event: React.MouseEvent<HTMLButtonElement>): void;
 };
 
-const CustomButton = ({
-  children,
-  type,
-  inverted = false,
-  isGoogleSignIn = false,
-  onClick = () => {},
-}: Props) => (
-  <button
-    className={`
-      custom-button
-      ${inverted ? 'inverted' : ''}
-      ${isGoogleSignIn ? 'google-sign-in' : ''}
-    `}
-    type={type}
-    onClick={onClick}
-  >
-    {children}
-  </button>
+const CustomButton = ({ children, ...props }: Props) => (
+  <CustomButtonContainer {...props}>{children}</CustomButtonContainer>
 );
 
 export default CustomButton;

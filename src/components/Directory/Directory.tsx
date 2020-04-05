@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
 
-import './Directory.styles.scss';
+import { DirectoryMenuContainer } from './Directory.styles';
 
 import MenuItem from '../MenuItem/MenuItem';
 
@@ -11,7 +11,7 @@ import { selectDirectorySections } from '../../redux/directory/directory.selecto
 type Props = ReturnType<typeof mapStateToProps>;
 
 const Directory = ({ sections }: Props) => (
-  <div className='directory-menu'>
+  <DirectoryMenuContainer>
     {sections.map(({ id, title, imageUrl, linkUrl, size }) => {
       return (
         <MenuItem
@@ -23,7 +23,7 @@ const Directory = ({ sections }: Props) => (
         />
       );
     })}
-  </div>
+  </DirectoryMenuContainer>
 );
 
 const mapStateToProps = (state: RootState) => ({

@@ -1,6 +1,10 @@
 import React from 'react';
 
-import './CollectionPreview.styles.scss';
+import {
+  CollectionPreviewContainer,
+  TitleContainer,
+  PreviewContainer,
+} from './CollectionPreview.styles';
 
 import { Item } from '../../redux/shop/shop.data';
 import CollectionItem from '../CollectionItem/CollectionItem';
@@ -12,14 +16,14 @@ type Props = {
 
 const CollectionPreview = ({ title, items }: Props) => {
   return (
-    <div className='collection-preview'>
-      <h1 className='title'>{title}</h1>
-      <div className='preview'>
+    <CollectionPreviewContainer>
+      <TitleContainer>{title}</TitleContainer>
+      <PreviewContainer>
         {items.slice(0, 4).map((item) => {
           return <CollectionItem key={item.id} item={item} />;
         })}
-      </div>
-    </div>
+      </PreviewContainer>
+    </CollectionPreviewContainer>
   );
 };
 
