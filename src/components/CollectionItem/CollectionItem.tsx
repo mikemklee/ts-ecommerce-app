@@ -11,7 +11,7 @@ import {
 } from './CollectionItem.styles';
 
 import { RootActionTypes } from '../../redux/rootReducer';
-import { Item } from '../../redux/shop/shop.data';
+import { Item } from '../../redux/shop/shop.reducer';
 import { addItem } from '../../redux/cart/cart.actions';
 
 type Props = {

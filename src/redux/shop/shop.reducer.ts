@@ -1,12 +1,29 @@
-import { ShopActionTypes } from './shop.actions';
-import { SHOP_DATA, Collections } from './shop.data';
+import { ShopActionTypes, GET_COLLECTIONS } from './shop.actions';
+
+export type Item = {
+  id: number;
+  name: string;
+  imageUrl: string;
+  price: number;
+};
+
+export type Collection = {
+  id: number;
+  title: string;
+  routeName: string;
+  items: Item[];
+};
+
+export type Collections = {
+  [key: string]: Collection;
+};
 
 export type ShopState = {
-  collections: Collections;
+  collections: Collections | null;
 };
 
 const INITIAL_STATE: ShopState = {
-  collections: SHOP_DATA,
+  collections: null,
 };
 
 const shopReducer = (
@@ -14,6 +31,11 @@ const shopReducer = (
   action: ShopActionTypes
 ) => {
   switch (action.type) {
+    case GET_COLLECTIONS:
+      return {
+        ...state,
+        collections: action.payload,
+      };
     default:
       return state;
   }

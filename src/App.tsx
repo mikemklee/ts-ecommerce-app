@@ -13,7 +13,6 @@ import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { RootActionTypes, RootState } from './redux/rootReducer';
 import { setCurrentUser } from './redux/user/user.actions';
 import { selectCurrentUser } from './redux/user/user.selectors';
-
 export type User = firebase.firestore.DocumentData & { id?: string };
 
 type Props = ReturnType<typeof mapStateToProps> &
@@ -24,20 +23,21 @@ class App extends React.Component<Props, State> {
   unsubscribeFromAuth: Function | null = null;
 
   componentDidMount() {
+    const { setCurrentUser } = this.props;
     this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         if (userRef) {
           userRef.onSnapshot((snapShot) => {
-            this.props.setCurrentUser({
+            setCurrentUser({
               id: snapShot.id,
               ...snapShot.data(),
             });
           });
         }
       } else {
-        this.props.setCurrentUser(userAuth);
+        setCurrentUser(userAuth);
       }
     });
   }

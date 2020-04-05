@@ -1,4 +1,4 @@
-import { Item } from '../shop/shop.data';
+import { Item } from '../shop/shop.reducer';
 
 import { CartItem } from './cart.reducer';
 

@@ -6,7 +6,7 @@ import {
   PreviewContainer,
 } from './CollectionPreview.styles';
 
-import { Item } from '../../redux/shop/shop.data';
+import { Item } from '../../redux/shop/shop.reducer';
 import CollectionItem from '../CollectionItem/CollectionItem';
 
 type Props = {
