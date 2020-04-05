@@ -1,15 +1,15 @@
 import React from 'react';
 
+import { AuthenticateContainer } from './Authenticate.styles';
+
 import SignIn from '../../components/SignIn/SignIn';
 import SignUp from '../../components/SignUp/SignUp';
 
-import './Authenticate.styles.scss';
-
 const Authenticate = () => (
-  <div className='authenticate'>
+  <AuthenticateContainer>
     <SignIn />
     <SignUp />
-  </div>
+  </AuthenticateContainer>
 );
 
 export default Authenticate;

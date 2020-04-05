@@ -4,10 +4,10 @@ import { connect } from 'react-redux';
 
 import './App.css';
 import Header from './components/Header/Header';
-import HomePage from './pages/Homepage/Homepage';
+import HomePage from './pages/Home/Home';
 import ShopPage from './pages/Shop/Shop';
 import CheckoutPage from './pages/Checkout/Checkout';
-import Authenticate from './pages/Authenticate/Authenticate';
+import AuthenticatePage from './pages/Authenticate/Authenticate';
 
 import { auth, createUserProfileDocument } from './firebase/firebase.utils';
 import { RootActionTypes, RootState } from './redux/rootReducer';
@@ -24,12 +24,12 @@ class App extends React.Component<Props, State> {
   unsubscribeFromAuth: Function | null = null;
 
   componentDidMount() {
-    this.unsubscribeFromAuth = auth.onAuthStateChanged(async userAuth => {
+    this.unsubscribeFromAuth = auth.onAuthStateChanged(async (userAuth) => {
       if (userAuth) {
         const userRef = await createUserProfileDocument(userAuth);
 
         if (userRef) {
-          userRef.onSnapshot(snapShot => {
+          userRef.onSnapshot((snapShot) => {
             this.props.setCurrentUser({
               id: snapShot.id,
               ...snapShot.data(),
@@ -61,7 +61,11 @@ class App extends React.Component<Props, State> {
             exact
             path='/signin'
             render={() =>
-              this.props.currentUser ? <Redirect to='/' /> : <Authenticate />
+              this.props.currentUser ? (
+                <Redirect to='/' />
+              ) : (
+                <AuthenticatePage />
+              )
             }
           />
         </Switch>
