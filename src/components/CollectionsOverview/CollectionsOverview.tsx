@@ -6,7 +6,7 @@ import './CollectionsOverview.styles.scss';
 import CollectionPreview from '../CollectionPreview/CollectionPreview';
 
 import { RootState } from '../../redux/rootReducer';
-import { selectCollections } from '../../redux/shop/shop.selectors';
+import { selectCollectionsForPreview } from '../../redux/shop/shop.selectors';
 
 type Props = ReturnType<typeof mapStateToProps>;
 
@@ -19,7 +19,7 @@ const CollectionsOverview = ({ collections }: Props) => (
 );
 
 const mapStateToProps = (state: RootState) => ({
-  collections: selectCollections(state),
+  collections: selectCollectionsForPreview(state),
 });
 
 export default connect(mapStateToProps)(CollectionsOverview);

@@ -1,8 +1,8 @@
 import { ShopActionTypes } from './shop.actions';
-import { SHOP_DATA, Collection } from './Shop.data';
+import { SHOP_DATA, Collections } from './shop.data';
 
 export type ShopState = {
-  collections: Collection[];
+  collections: Collections;
 };
 
 const INITIAL_STATE: ShopState = {

@@ -1,4 +1,4 @@
-import { Item } from '../shop/Shop.data';
+import { Item } from '../shop/shop.data';
 import {
   CartActionTypes,
   TOGGLE_CART_VISIBLE,

@@ -2,7 +2,7 @@ import React from 'react';
 
 import './CollectionPreview.styles.scss';
 
-import { Item } from '../../redux/shop/Shop.data';
+import { Item } from '../../redux/shop/shop.data';
 import CollectionItem from '../CollectionItem/CollectionItem';
 
 type Props = {

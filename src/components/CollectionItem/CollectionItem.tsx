@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 
 import './CollectionItem.styles.scss';
 
-import { Item } from '../../redux/shop/Shop.data';
+import { Item } from '../../redux/shop/shop.data';
 import CustomButton from '../CustomButton/CustomButton';
 import { addItem } from '../../redux/cart/cart.actions';
 import { RootActionTypes } from '../../redux/rootReducer';

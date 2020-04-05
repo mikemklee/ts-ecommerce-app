@@ -9,19 +9,13 @@ export const selectCollections = createSelector(
   (shop) => shop.collections
 );
 
-const COLLECTION_ID_MAP = {
-  hats: 1,
-  sneakers: 2,
-  jackets: 3,
-  womens: 4,
-  mens: 5,
-};
+export const selectCollectionsForPreview = createSelector(
+  [selectCollections],
+  (collections) => Object.keys(collections).map((key) => collections[key])
+);
 
-type collectionParams = 'hats' | 'sneakers' | 'jackets' | 'womens' | 'mens';
-
-export const selectCollection = (collectionUrlParam: collectionParams) =>
-  createSelector([selectCollections], (collections) =>
-    collections.find(
-      (collection) => collection.id === COLLECTION_ID_MAP[collectionUrlParam]
-    )
+export const selectCollection = (collectionUrlParam: string) =>
+  createSelector(
+    [selectCollections],
+    (collections) => collections[collectionUrlParam]
   );
