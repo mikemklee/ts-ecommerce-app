@@ -7,7 +7,7 @@ export type SetCurrentUserAction = {
   payload: User | null;
 };
 
-export type UserActionTypes = SetCurrentUserAction;
+export type UserActions = SetCurrentUserAction;
 
 export const setCurrentUser = (user: User | null): SetCurrentUserAction => ({
   type: SET_CURRENT_USER,

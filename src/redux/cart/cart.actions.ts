@@ -41,7 +41,7 @@ export const dropItem = (item: CartItem): DropItemAction => ({
   payload: item,
 });
 
-export type CartActionTypes =
+export type CartActions =
   | ToggleCartVisibleAction
   | AddItemAction
   | RemoveItemAction

@@ -1,1 +1,1 @@
-export type DirectoryActionTypes = { type: string; payload: any };
+export type DirectoryActions = { type: string; payload: any };

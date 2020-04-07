@@ -1,4 +1,9 @@
-import { ShopActionTypes, GET_COLLECTIONS } from './shop.actions';
+import {
+  ShopActions,
+  GET_COLLECTIONS_REQUEST,
+  GET_COLLECTIONS_SUCCESS,
+  GET_COLLECTIONS_FAILURE,
+} from './shop.actions';
 
 export type Item = {
   id: number;
@@ -20,21 +25,34 @@ export type Collections = {
 
 export type ShopState = {
   collections: Collections | null;
+  isFetching: boolean;
+  errorMessage: string | null;
 };
 
 const INITIAL_STATE: ShopState = {
   collections: null,
+  isFetching: false,
+  errorMessage: null,
 };
 
-const shopReducer = (
-  state: ShopState = INITIAL_STATE,
-  action: ShopActionTypes
-) => {
+const shopReducer = (state: ShopState = INITIAL_STATE, action: ShopActions) => {
   switch (action.type) {
-    case GET_COLLECTIONS:
+    case GET_COLLECTIONS_REQUEST:
       return {
         ...state,
+        isFectching: true,
+      };
+    case GET_COLLECTIONS_SUCCESS:
+      return {
+        ...state,
+        isFetching: false,
         collections: action.payload,
+      };
+    case GET_COLLECTIONS_FAILURE:
+      return {
+        ...state,
+        isFetching: false,
+        errorMessage: action.payload,
       };
     default:
       return state;

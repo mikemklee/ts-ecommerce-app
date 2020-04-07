@@ -1,4 +1,4 @@
-import { DirectoryActionTypes } from './directory.actions';
+import { DirectoryActions } from './directory.actions';
 
 type SectionItem = {
   title: string;
@@ -51,7 +51,7 @@ const INITIAL_STATE: DirectoryState = {
 
 const directoryReducer = (
   state: DirectoryState = INITIAL_STATE,
-  action: DirectoryActionTypes
+  action: DirectoryActions
 ) => {
   switch (action.type) {
     default:

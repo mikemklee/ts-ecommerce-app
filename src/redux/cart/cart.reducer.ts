@@ -1,6 +1,6 @@
 import { Item } from '../shop/shop.reducer';
 import {
-  CartActionTypes,
+  CartActions,
   TOGGLE_CART_VISIBLE,
   ADD_ITEM,
   REMOVE_ITEM,
@@ -21,10 +21,7 @@ const INITIAL_STATE: CartState = {
   items: [],
 };
 
-const cartReducer = (
-  state: CartState = INITIAL_STATE,
-  action: CartActionTypes
-) => {
+const cartReducer = (state: CartState = INITIAL_STATE, action: CartActions) => {
   switch (action.type) {
     case TOGGLE_CART_VISIBLE:
       return {
